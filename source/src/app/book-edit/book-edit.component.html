@@ -1,0 +1,68 @@
+<!-- write code to edit and save book i this component -->
+<div class="button-row">
+  <a [routerLink]="['/books']" color="primary" mat-raised-button>
+    <mat-icon>list</mat-icon>
+  </a>
+  <h2 style="text-align: center; color: white;font-size:30px;" >Update Book</h2>
+</div>
+<form (ngSubmit)="onFormSubmit(bookForm.value)" [formGroup]="bookForm">
+  <label>ISBN</label>
+  <mat-form-field class="example-full-width">
+    <input [errorStateMatcher]="matcher" formControlName="isbn" matInput
+           value="{{book.isbn}}" style="font-size: 15px;font-style:italic">
+    <mat-error>
+      <span *ngIf="!bookForm.get('isbn').valid && bookForm.get('isbn').touched">Please enter ISBN</span>
+    </mat-error>
+  </mat-form-field>
+
+  <label>Title</label>
+  <mat-form-field class="example-full-width">
+    <input [errorStateMatcher]="matcher" formControlName="title" matInput
+           value="{{book.title}}" style="font-size: 15px;font-style:italic">
+    <mat-error>
+      <span *ngIf="!bookForm.get('title').valid &&bookForm.get('title').touched">Please enter Book Title</span>
+    </mat-error>
+  </mat-form-field>
+
+  <label>Author</label>
+  <mat-form-field class="example-full-width">
+    <input [errorStateMatcher]="matcher" formControlName="author" matInput
+           value="{{book.author}}" style="font-size: 15px;font-style:italic">
+    <mat-error>
+      <span *ngIf="!bookForm.get('author').valid && bookForm.get('author').touched">Please enter Book Author</span>
+    </mat-error>
+  </mat-form-field>
+
+  <label>Description</label>
+  <mat-form-field class="example-full-width">
+    <textarea [errorStateMatcher]="matcher" formControlName="description" matInput
+              value="{{book.description}}" style="font-size: 15px;font-style:italic"></textarea>
+    <mat-error>
+      <span *ngIf="!bookForm.get('description').valid">Please enter Book Description</span>
+    </mat-error>
+  </mat-form-field>
+
+  <label>Publisher</label>
+  <mat-form-field class="example-full-width">
+    <input [errorStateMatcher]="matcher" formControlName="publisher" matInput
+           value="{{book.publisher}}" style="font-size: 15px;font-style:italic">
+    <mat-error>
+      <span *ngIf="!bookForm.get('publisher').valid && bookForm.get('publisher').touched">Please enter Publisher</span>
+    </mat-error>
+  </mat-form-field>
+
+  <label>Published Year</label>
+  <mat-form-field class="example-full-width">
+    <input [errorStateMatcher]="matcher" formControlName="published_year" matInput
+           value="{{book.published_year}}" style="font-size: 15px;font-style:italic">
+    <mat-error>
+      <span *ngIf="!bookForm.get('published_year').valid && bookForm.get('published_year').touched">Please enter Published Year</span>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button [disabled]="!bookForm.valid" color="primary" mat-raised-button type="submit">
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</form>

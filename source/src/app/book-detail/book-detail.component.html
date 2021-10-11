@@ -1,0 +1,34 @@
+<div class="button-row">
+  <a [routerLink]="['/books']" color="primary" mat-raised-button>
+    <mat-icon>list</mat-icon>
+  </a>
+  <h2 style="text-align: center; color: white;font-size:30px;" >Book Details</h2>
+</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title><h2 style="font-size: 35px; text-align:center;color:#ff9966">{{book.title}}</h2></mat-card-title>
+    <mat-card-subtitle style="font-size: 15px; text-align:center;color:black">{{book.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt style="font-size: 20px;color:black">ISBN:</dt>
+      <dd style="font-size: 20px;color:#ff9966">{{book.isbn}}</dd>
+      <dt style="font-size: 20px;color:black">Author:</dt>
+      <dd style="font-size: 20px;color:#ff9966">{{book.author}}</dd>
+      <dt style="font-size: 20px;color:black">Publisher:</dt>
+      <dd style="font-size: 20px;color:#ff9966">{{book.publisher}}</dd>
+      <dt style="font-size: 20px;color:black">Publish Year:</dt>
+      <dd style="font-size: 20px;color:#ff9966">{{book.published_year}}</dd>
+      <dt style="font-size: 20px;color:black">Update Date:</dt>
+      <dd style="font-size: 20px;color:#ff9966">{{book.updated_date | date}}</dd>
+    </dl>
+  </mat-card-content>
+  <mat-card-actions>
+    <a [routerLink]="['/book-edit', book._id]" color="primary" mat-raised-button>
+      <mat-icon>edit</mat-icon>
+    </a>
+    <a (click)="deleteBook(book._id)" color="warn" mat-raised-button>
+      <mat-icon>delete</mat-icon>
+    </a>
+  </mat-card-actions>
+</mat-card>

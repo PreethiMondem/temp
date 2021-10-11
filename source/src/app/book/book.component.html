@@ -1,0 +1,36 @@
+<div class= "example-container">
+  <h1 style="text-align: center;color:white;font-size: 30px">Library Management System</h1>
+</div>
+<div class="button-row">
+  <a [routerLink]="['/book-create']" color="primary" mat-raised-button>
+    <mat-icon>add</mat-icon>
+  </a>
+</div>
+<div class="example-container mat-elevation-z8" style="background-color: #ffdab3">
+  <table #table [dataSource]="dataSource" mat-table style="background-color: #ffdab3">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="isbn">
+      <th *matHeaderCellDef mat-header-cell style="font-size: 25px; color:white"> ISBN</th>
+      <td *matCellDef="let element" class="isbn-col" mat-cell style="color:black;font-size: 15px;"> {{element.isbn}} </td>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th *matHeaderCellDef mat-header-cell style="font-size: 25px; color:white"> Title</th>
+      <td *matCellDef="let element" mat-cell style="color:black;font-size: 15px;"> {{element.title}} </td>
+    </ng-container>
+
+    <!-- Author Column -->
+    <ng-container matColumnDef="author">
+      <th *matHeaderCellDef mat-header-cell style="font-size: 25px; color:white"> Author</th>
+      <td *matCellDef="let element" mat-cell style="color:black;font-size: 15px;"> {{element.author}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/book-details/', row._id]" mat-row></tr>
+  </table>
+</div>
